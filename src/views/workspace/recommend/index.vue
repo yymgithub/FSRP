@@ -1,16 +1,5 @@
 <template>
-    <div>
-        推荐页面
-    </div>
+    <keep-alive>
+        <router-view></router-view>
+    </keep-alive>
 </template>
-
-<script>
-export default {
-    name:'Recommend',
-    data() {
-        return {
-
-        };
-    }
-}
-</script>

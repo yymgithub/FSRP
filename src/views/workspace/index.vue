@@ -40,8 +40,21 @@
                     <router-link tag="li" :to="{'name':item.router}" v-for="(item, index) in nav.person[navIndex].children" :key="index">{{item.name}}</router-link>
                 </ul>
             </section>
+             <section class="main-wrap">
+                <el-scrollbar class="page-component__left">
+                    <el-breadcrumb separator=">">
+                        <el-breadcrumb-item v-for="item in levelList" :key="item.path">
+                            {{ item.meta.title }}
+                        </el-breadcrumb-item>
+                    </el-breadcrumb>
+                    <div class="main">
+                        <keep-alive>
+                            <router-view></router-view>
+                        </keep-alive>
+                    </div>
+                </el-scrollbar>
+            </section>
         </div>
-        
     </div>
 </template>
 <script>
@@ -59,6 +72,8 @@ export default {
             this.listIndex = 2;
             this.defaultActive = this.nav["person"][0].path;
         }
+
+        this.getBreadcrumb();
   },
   data() {
       return {
@@ -66,6 +81,7 @@ export default {
             defaultActive: "",
             isCollapse: true,
             navIndex: 0,
+            levelList: null,
             nav: {
                 ask: [
                     {
@@ -121,6 +137,11 @@ export default {
             }
        }
     },
+     watch: {
+        $route() {
+            this.getBreadcrumb();
+        }
+    },
     methods: {
         select(key) {
             this.listIndex = key;
@@ -131,6 +152,18 @@ export default {
             } else if (/person/.test(key)) {
                 this.listIndex = 2;
             }
+        },
+        getBreadcrumb() {
+            let matched = this.$route.matched.filter(item => {
+                if (item.name) {
+                    return true;
+                }
+            });
+            const first = matched[0];
+            if (first) {
+                matched = [].concat(matched);
+            }
+            this.levelList = matched;
         }
     }
 }
@@ -196,6 +229,18 @@ export default {
                 line-height: 40px;
                 text-indent: 30px;
             }
+        }
+    }
+}
+.main-wrap {
+    flex: 1;
+    display: flex;
+    min-width: 956px;
+    .page-component__left {
+        height: calc(100vh - 60px);
+        padding: 10px 20px;
+        .main {
+            padding: 20px 0;
         }
     }
 }

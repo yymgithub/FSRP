@@ -16,6 +16,7 @@ const routers = [
         children: [
             {
                 path: 'ask',
+                name: 'ask',
                 meta: {
                     title: '故障问答'
                 },
@@ -26,7 +27,7 @@ const routers = [
                         path: 'answerlist',
                         name: 'answerlist',
                         meta: {
-                            title: '故障详情'
+                            title: '问题描述'
                         },
                         component: () => import('@/views/workspace/ask/troubleAsk/list')
                     },
@@ -42,11 +43,12 @@ const routers = [
             },
             {
                 path:'recommend',
+                name:'recommend',
                 meta: {
                     title: '相关推荐'
                 },
-                redirect: '/workspace/recommend/recommendlist',
                 component: () => import('@/views/workspace/recommend/index'),
+                redirect: '/workspace/recommend/recommendlist',
                 children: [
                     {
                         path: 'historyask',
@@ -54,13 +56,13 @@ const routers = [
                         meta: {
                             title: '历史记录查询'
                         },
-                        component: () => import('@/views/workspace/recommend/homepage/content')
+                        component: () => import('@/views/workspace/recommend/historyask/index')
                     },
                     {
                         path: 'recommendlist',
                         name: 'recommendlist',
                         meta: {
-                            title: '推荐首页'
+                            title: '历史记录推荐'
                         },
                         component: () => import('@/views/workspace/recommend/homepage/list')
                     }
@@ -68,6 +70,7 @@ const routers = [
             },
             {
                 path: 'person',
+                name: 'person',
                 meta: {
                     title: '个人管理'
                 },

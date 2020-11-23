@@ -1,12 +1,12 @@
 <template>
     <div>
-        问题描述
+        历史查询
     </div>
 </template>
 
 <script>
 export default {
-    name:'Ask',
+    name:'Recommend',
     data() {
         return {
 
