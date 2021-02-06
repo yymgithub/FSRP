@@ -1,13 +1,14 @@
 <template>
     <div class="header-wrap">
         <header :style="{'width':isWorkspace?'100%':'1200px','background':isWorkspace?'#2e3134':'auto'}">
-            <h1 v-if="!isWorkspace" :style="{'margin-left':isWorkspace?'24px':'0'}">ITFSRP</h1>
-            <h1 v-if="isWorkspace" style="margin-left:24px;font-size:20px">IT故障解决方案推荐平台</h1>
+            <h1 v-if="!isWorkspace" :style="{'margin-left':isWorkspace?'24px':'0'}">AIOPS</h1>
+            <h1 v-if="isWorkspace" style="margin-left:24px;font-size:20px">智能监控平台</h1>
             <ul>
                 <router-link tag="li" to="/home">首页</router-link>
-                <router-link tag="li" to="/workspace/ask">故障问答</router-link>
-                <router-link tag="li" to="/workspace/recommend">相关推荐</router-link>
-                <router-link tag="li" to="/workspace/person">个人中心</router-link>
+                <router-link v-if="!isWorkspace" tag="li" to="/workspace/dashboard">故障问答</router-link>
+                <router-link v-if="!isWorkspace" tag="li" to="/workspace/recommend">相关推荐</router-link>
+                <router-link v-if="!isWorkspace" tag="li" to="/workspace/person">个人中心</router-link>
+                <p v-if="isWorkspace">退出</p>
             </ul>
         </header>
     </div>
@@ -39,6 +40,9 @@ export default {
     width: 100%;
     color: #fff;
     font-size: 14px;
+    p {
+        margin-right: 20px;
+    }
 }
 h1 {
     font-size: 25px;

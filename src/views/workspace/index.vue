@@ -3,7 +3,7 @@
         <my-header></my-header>
         <div class="container">
             <el-menu class="el-menu-vertical-demo" :collapse="isCollapse" @select="select" background-color="#2e3134" :default-active="defaultActive" :router="true">
-                <el-menu-item :index="item.path" :key="item.path" v-for="item in nav.ask">
+                <el-menu-item :index="item.path" :key="item.path" v-for="item in nav.dashboard">
                     <my-icon v-if="listIndex != 0" :type="item.icon"></my-icon>
                     <my-icon v-else :type="item.activeIcon"></my-icon>
                 </el-menu-item>
@@ -15,13 +15,15 @@
                     <my-icon v-if="listIndex != 2" :type="item.icon"></my-icon>
                     <my-icon v-else :type="item.activeIcon"></my-icon>
                 </el-menu-item>
+                <Button class="hideMenuStyle" type="text" shape="circle" @click="hideMenu" icon="md-arrow-back" v-if="listIndex !== -1"></Button>
+                <Button class="hideMenuStyle" type="text" shape="circle" @click="showMenu" icon="md-arrow-forward" v-if="listIndex == -1"></Button>
             </el-menu>
             <section class="tab" v-if="listIndex == 0">
                 <div class="title">
-                    <span>故障问答</span>
+                    <span>监控信息</span>
                 </div>
                 <ul class="list">
-                    <router-link tag="li" :to="{'name':item.router}" v-for="(item, index) in nav.ask[navIndex].children" :key="index">{{item.name}}</router-link>
+                    <router-link tag="li" :to="{'name':item.router}" v-for="(item, index) in nav.dashboard[navIndex].children" :key="index">{{item.name}}</router-link>
                 </ul>
             </section>
             <section class="tab" v-if="listIndex == 1">
@@ -40,7 +42,7 @@
                     <router-link tag="li" :to="{'name':item.router}" v-for="(item, index) in nav.person[navIndex].children" :key="index">{{item.name}}</router-link>
                 </ul>
             </section>
-             <section class="main-wrap">
+            <section class="main-wrap">
                 <el-scrollbar class="page-component__left">
                     <el-breadcrumb separator=">">
                         <el-breadcrumb-item v-for="item in levelList" :key="item.path">
@@ -62,9 +64,9 @@ import MyHeader from '../home/layout/MyHeader.vue'
 export default {
   components: { MyHeader },
   created() {
-      if (/ask/.test(this.$route.path)) {
+      if (/dashboard/.test(this.$route.path)) {
             this.listIndex = 0;
-            this.defaultActive = this.nav["ask"][0].path;
+            this.defaultActive = this.nav["dashboard"][0].path;
         } else if (/recommend/.test(this.$route.path)) {
             this.listIndex = 1;
             this.defaultActive = this.nav["recommend"][0].path;
@@ -77,21 +79,26 @@ export default {
   },
   data() {
       return {
+            currentIndex: "",
             listIndex: "",
             defaultActive: "",
             isCollapse: true,
             navIndex: 0,
             levelList: null,
             nav: {
-                ask: [
+                dashboard: [
                     {
-                        path: "/workspace/ask",
-                        icon: "home_shengjifabu_sel",
-                        activeIcon: "home_shengjifabu_sel",
+                        path: "/workspace/dashboard",
+                        icon: "home_huiduceshi_sele",
+                        activeIcon: "home_huiduceshi_sele",
                         children: [
                             {
-                                name: "问题描述",
-                                router: "answerlist"
+                                name: "系统部署图",
+                                router: "systemlist"
+                            },
+                            {
+                                name: "指标详情",
+                                router: "indicatorinfo"
                             }
                         ]
                     }
@@ -99,8 +106,8 @@ export default {
                 recommend: [
                     {
                             path: "/workspace/recommend",
-                            icon: "home_yunyingtuijian_1",
-                            activeIcon: "home_yunyingtuijian_1",
+                            icon: "home_shengjifabu_sel",
+                            activeIcon: "home_shengjifabu_sel",
                             children: [
                                 {
                                     name: "历史记录推荐",
@@ -116,8 +123,8 @@ export default {
                 person: [
                     {
                         path: "/workspace/person",
-                        icon: "home_huiduceshi_sele",
-                        activeIcon: "home_huiduceshi_sele",
+                        icon: "home_yunyingtuijian_1",
+                        activeIcon: "home_yunyingtuijian_1",
                         children: [
                             {
                                 name: "我的提问",
@@ -137,15 +144,22 @@ export default {
             }
        }
     },
-     watch: {
+    watch: {
         $route() {
             this.getBreadcrumb();
         }
     },
     methods: {
+        hideMenu() {
+            this.currentIndex = this.listIndex;
+            this.listIndex = -1;
+        },
+        showMenu() {
+            this.listIndex = this.currentIndex;
+        },
         select(key) {
             this.listIndex = key;
-            if (/ask/.test(key)) {
+            if (/dashboard/.test(key)) {
                 this.listIndex = 0;
             } else if (/recommend/.test(key)) {
                 this.listIndex = 1;
@@ -230,6 +244,11 @@ export default {
                 text-indent: 30px;
             }
         }
+    }
+    .hideMenuStyle{
+        position: absolute;
+        bottom:10px;
+        left: 10px;
     }
 }
 .main-wrap {

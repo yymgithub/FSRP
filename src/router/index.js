@@ -12,32 +12,32 @@ const routers = [
     {
         path:'/workspace',
         component: () => import('@/views/workspace/index'),
-        redirect: '/workspace/ask',
+        redirect: '/workspace/dashboard',
         children: [
             {
-                path: 'ask',
-                name: 'ask',
+                path: 'dashboard',
+                name: 'dashboard',
                 meta: {
-                    title: '故障问答'
+                    title: '监控信息'
                 },
-                redirect: '/workspace/ask/answerlist',
-                component: () => import('@/views/workspace/ask/index'),
+                redirect: '/workspace/dashboard/systemlist',
+                component: () => import('@/views/workspace/dashboard/index'),
                 children: [
                     {
-                        path: 'answerlist',
-                        name: 'answerlist',
+                        path: 'systemlist',
+                        name: 'systemlist',
                         meta: {
-                            title: '问题描述'
+                            title: '系统部署图'
                         },
-                        component: () => import('@/views/workspace/ask/troubleAsk/list')
+                        component: () => import('@/views/workspace/dashboard/systemList/list')
                     },
                     {
-                        path: 'answercontent',
-                        name: 'answercontent',
+                        path: 'indicatorinfo',
+                        name: 'indicatorinfo',
                         meta: {
-                            title: '方案详情'
+                            title: '指标详情'
                         },
-                        component: () => import('@/views/workspace/ask/troubleAsk/content')
+                        component: () => import('@/views/workspace/dashboard/indicatorInfo/list')
                     }
                 ]
             },
