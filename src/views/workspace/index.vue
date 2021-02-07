@@ -255,6 +255,7 @@ export default {
     flex: 1;
     display: flex;
     min-width: 956px;
+    overflow-y: scroll;
     .page-component__left {
         height: calc(100vh - 60px);
         padding: 10px 20px;

@@ -16,7 +16,7 @@
           <div class="btn-wrap">
                 <div class="btn">开始使用</div>
                 <div class="btn2">
-                    <router-link tag="a" :to="{ path: 'workspace/dashboard' }">故障问答</router-link>
+                    <router-link tag="a" :to="{ path: 'workspace/dashboard' }">监控信息</router-link>
                     <!-- <router-link tag="a" :to="{ path: 'person' }">历史记录</router-link> -->
                     <!-- <router-link tag="a" :to="{ path: 'recommend' }">历史推荐</router-link> -->
                 </div>

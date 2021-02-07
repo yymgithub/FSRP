@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import router from './router';
+import axios from 'axios';
 import '@/styles/iconfont.css';
 import '@/iconfont/iconfont.js';
 import '@/styles/reset.less';
@@ -10,8 +11,8 @@ import 'view-design/dist/styles/iview.css';
 import icon from '@/components/icon';
 import App from './App.vue';
 
-Vue.config.productionTip = false
-
+Vue.config.productionTip = false;
+Vue.prototype.$http = axios;
 Vue.use(router)
 Vue.use(ElementUI)
 Vue.use(ViewUI)

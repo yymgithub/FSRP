@@ -5,7 +5,7 @@
             <h1 v-if="isWorkspace" style="margin-left:24px;font-size:20px">智能监控平台</h1>
             <ul>
                 <router-link tag="li" to="/home">首页</router-link>
-                <router-link v-if="!isWorkspace" tag="li" to="/workspace/dashboard">故障问答</router-link>
+                <router-link v-if="!isWorkspace" tag="li" to="/workspace/dashboard">监控信息</router-link>
                 <router-link v-if="!isWorkspace" tag="li" to="/workspace/recommend">相关推荐</router-link>
                 <router-link v-if="!isWorkspace" tag="li" to="/workspace/person">个人中心</router-link>
                 <p v-if="isWorkspace">退出</p>
