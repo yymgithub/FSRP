@@ -7,7 +7,6 @@
 
 <script>
 import * as echarts from 'echarts';
-import api from '../../../../api';
 import G6 from '@antv/g6';
 import insertCss from 'insert-css';
 insertCss(`
@@ -45,7 +44,6 @@ const data = {
 
 export default {
     name:'systemlist',
-    mixins: [api],
     data() {
         return {
         };
