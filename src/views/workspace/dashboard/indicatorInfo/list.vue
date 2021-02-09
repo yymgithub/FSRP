@@ -1,5 +1,89 @@
 <template>
-    <div>
-        指标详情
+    <div style="width:70vw;">
+    <mind :data="dataList" :height="height"></mind>
     </div>
+
 </template>
+<script>
+import mind from '@/components/mind'
+export default {
+    name:'Indicatorinfo',
+    components: {
+        mind
+    },
+    data() {
+        return {
+            dataList:{
+                "id": "id1",
+                "label": "System",
+                "children": [
+                     {
+                        "id": "id1-1",
+                        "label": "主机A",
+                        "children": [{
+                                "id": "id1-1-1",
+                                "label": "hadoop-master",
+                                 "children": [
+                                    {
+                                        "id": "id1-1-1-1",
+                                        "label": "NameNode"
+                                    },
+                                    {
+                                        "id": "id1-1-1-2",
+                                        "label": "ResourceManager"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "id1-2",
+                        "label": "主机B",
+                        "children": [
+                            {
+                                "id": "id1-2-1",
+                                "label": "hadoop-slave1",
+                                "children": [
+                                    {
+                                        "id": "id1-2-1-1",
+                                        "label": "NameNode"
+                                    },
+                                    {
+                                        "id": "id1-2-1-2",
+                                        "label": "ResourceManager"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "id1-2-2",
+                                "label": "hadoop-slave2",
+                                "children": [
+                                    {
+                                        "id": "id1-2-2-1",
+                                        "label": "NameNode"
+                                    },
+                                    {
+                                        "id": "id1-2-2-2",
+                                        "label": "ResourceManager"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "id1-3",
+                        "label": "主机C",
+                        "children": [{
+                                "id": "id1-3-1",
+                                "label": "hadoop-slave3",
+                            }
+                        ]
+
+                    }
+                ]
+            },
+            height: 400
+        };
+    }
+}
+</script>

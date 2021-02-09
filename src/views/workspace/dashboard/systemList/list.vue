@@ -45,13 +45,12 @@ const data = {
 export default {
     name:'systemlist',
     data() {
-        return {
-        };
+        return {};
     },
     mounted() {
         this.$http.get('/data/home.json').then((res) => {
                 console.log(res)
-            })
+        })
 
         const graph = new G6.Graph({
         container: 'mountNode', // String | HTMLElement，必须，在 Step 1 中创建的容器 id 或容器本身
