@@ -27,7 +27,7 @@ const routers = [
                         path: 'systemlist',
                         name: 'systemlist',
                         meta: {
-                            title: '系统部署图'
+                            title: '系统基础信息'
                         },
                         component: () => import('@/views/workspace/dashboard/systemList/list')
                     },
@@ -35,7 +35,7 @@ const routers = [
                         path: 'indicatorinfo',
                         name: 'indicatorinfo',
                         meta: {
-                            title: '指标详情'
+                            title: '异常信息统计'
                         },
                         component: () => import('@/views/workspace/dashboard/indicatorInfo/list')
                     }

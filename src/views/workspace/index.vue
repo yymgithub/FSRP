@@ -44,11 +44,11 @@
             </section>
             <section class="main-wrap">
                 <el-scrollbar class="page-component__left">
-                    <el-breadcrumb separator=">">
+                    <!-- <el-breadcrumb separator=">">
                         <el-breadcrumb-item v-for="item in levelList" :key="item.path">
                             {{ item.meta.title }}
                         </el-breadcrumb-item>
-                    </el-breadcrumb>
+                    </el-breadcrumb> -->
                     <div class="main">
                         <keep-alive>
                             <router-view></router-view>
@@ -93,11 +93,11 @@ export default {
                         activeIcon: "home_huiduceshi_sele",
                         children: [
                             {
-                                name: "系统部署图",
+                                name: "系统基础信息",
                                 router: "systemlist"
                             },
                             {
-                                name: "指标详情",
+                                name: "异常信息详情",
                                 router: "indicatorinfo"
                             }
                         ]
@@ -259,10 +259,15 @@ export default {
     .page-component__left {
         height: calc(100vh - 60px);
         padding: 10px 20px;
-        .main {
+        width: 100%;
+        .el-scrollbar__wrap{
+            margin-right: 0px!important;
+            .main {
             padding: 20px 0;
+            }
         }
     }
+   
 }
 .el-menu-item.is-active {
     background: #64c7ee !important;
