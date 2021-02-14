@@ -42,29 +42,29 @@ const routers = [
                 ]
             },
             {
-                path:'recommend',
-                name:'recommend',
+                path:'abnormal',
+                name:'abnormal',
                 meta: {
-                    title: '相关推荐'
+                    title: '异常信息'
                 },
-                component: () => import('@/views/workspace/recommend/index'),
-                redirect: '/workspace/recommend/recommendlist',
+                component: () => import('@/views/workspace/abnormal/index'),
+                redirect: '/workspace/abnormal/chart',
                 children: [
                     {
-                        path: 'historyask',
-                        name: 'historyask',
+                        path: 'history',
+                        name: 'history',
                         meta: {
-                            title: '历史记录查询'
+                            title: '已处理异常'
                         },
-                        component: () => import('@/views/workspace/recommend/historyask/index')
+                        component: () => import('@/views/workspace/abnormal/history/index')
                     },
                     {
-                        path: 'recommendlist',
-                        name: 'recommendlist',
+                        path: 'chart',
+                        name: 'chart',
                         meta: {
-                            title: '历史记录推荐'
+                            title: '异常监控'
                         },
-                        component: () => import('@/views/workspace/recommend/homepage/list')
+                        component: () => import('@/views/workspace/abnormal/chart/list')
                     }
                 ]
             },

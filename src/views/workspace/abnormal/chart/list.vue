@@ -60,7 +60,7 @@
 import mind from '@/components/mind';
 import linechart from '@/components/charts/linecharts';
 export default {
-    name:'systemlist',
+    name:'chartlist',
     components: {
         mind,
         linechart

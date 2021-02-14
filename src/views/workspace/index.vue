@@ -7,7 +7,7 @@
                     <my-icon v-if="listIndex != 0" :type="item.icon"></my-icon>
                     <my-icon v-else :type="item.activeIcon"></my-icon>
                 </el-menu-item>
-                <el-menu-item :index="item.path" :key="item.path" v-for="item in nav.recommend">
+                <el-menu-item :index="item.path" :key="item.path" v-for="item in nav.abnormal">
                     <my-icon v-if="listIndex != 1" :type="item.icon"></my-icon>
                     <my-icon v-else :type="item.activeIcon"></my-icon>
                 </el-menu-item>
@@ -28,10 +28,10 @@
             </section>
             <section class="tab" v-if="listIndex == 1">
                 <div class="title">
-                    <span>相关推荐</span>
+                    <span>异常信息</span>
                 </div>
                 <ul class="list">
-                    <router-link tag="li" :to="{'name':item.router}" v-for="(item, index) in nav.recommend[navIndex].children" :key="index">{{item.name}}</router-link>
+                    <router-link tag="li" :to="{'name':item.router}" v-for="(item, index) in nav.abnormal[navIndex].children" :key="index">{{item.name}}</router-link>
                 </ul>
             </section>
             <section class="tab" v-if="listIndex == 2">
@@ -67,9 +67,9 @@ export default {
       if (/dashboard/.test(this.$route.path)) {
             this.listIndex = 0;
             this.defaultActive = this.nav["dashboard"][0].path;
-        } else if (/recommend/.test(this.$route.path)) {
+        } else if (/abnormal/.test(this.$route.path)) {
             this.listIndex = 1;
-            this.defaultActive = this.nav["recommend"][0].path;
+            this.defaultActive = this.nav["abnormal"][0].path;
         } else if (/person/.test(this.$route.path)) {
             this.listIndex = 2;
             this.defaultActive = this.nav["person"][0].path;
@@ -97,25 +97,25 @@ export default {
                                 router: "systemlist"
                             },
                             {
-                                name: "异常信息详情",
+                                name: "系统指标信息",
                                 router: "indicatorinfo"
                             }
                         ]
                     }
                     ],
-                recommend: [
+                abnormal: [
                     {
-                            path: "/workspace/recommend",
+                            path: "/workspace/abnormal",
                             icon: "home_shengjifabu_sel",
                             activeIcon: "home_shengjifabu_sel",
                             children: [
                                 {
-                                    name: "历史记录推荐",
-                                    router: "recommendlist"
+                                    name: "异常监控",
+                                    router: "chart"
                                 },
                                 {
-                                    name: "历史记录查询",
-                                    router: "historyask"
+                                    name: "已处理异常",
+                                    router: "history"
                                 },
                             ]
                     }
@@ -161,7 +161,7 @@ export default {
             this.listIndex = key;
             if (/dashboard/.test(key)) {
                 this.listIndex = 0;
-            } else if (/recommend/.test(key)) {
+            } else if (/abnormal/.test(key)) {
                 this.listIndex = 1;
             } else if (/person/.test(key)) {
                 this.listIndex = 2;
