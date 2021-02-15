@@ -1,17 +1,17 @@
 <template>
     <div style="display:flex;width:100%;">
-        <div :id="lineChartId" :style="{width: width, height: height}"></div>
+        <div :id="barChartId" :style="{width: width, height: height}"></div>
     </div>
 </template>
 <script>
 import * as echarts from 'echarts';
 export default {
-    name: "linechart",
+    name: "barchart",
     props: {
-        lineChartId:{
+        barChartId:{
             type: String,
             default () {
-                return 'lineChartId'
+                return 'barChartId'
             }
         },
         source: {
@@ -47,13 +47,13 @@ export default {
     methods: {
         drawBar(){
         // 基于准备好的dom，初始化echarts实例
-        let lineChart = echarts.init(document.getElementById(this.lineChartId));
+        let barChart = echarts.init(document.getElementById(this.barChartId));
         let option = {
                 legend: {},
                 tooltip: {
                   trigger: 'axis'
                 },
-                grid: {
+                 grid: {
                   left: '3%',
                   right: '7%',
                   bottom: '3%',
@@ -69,29 +69,33 @@ export default {
                 // to a column of dataset.source by default.
                 series: [
                     {
-                        type: 'line',
+                        type: 'bar',
+                        stack: '总量',
                         barWidth: 16,
                         color:'rgb(245, 108, 108)',
                     },
                     {
-                        type: 'line',
+                        type: 'bar',
+                        stack: '总量',
                         barWidth: 20,
                         color:'rgb(255, 136, 51)'
                     },
                     {
-                        type: 'line',
+                        type: 'bar',
+                        stack: '总量',
                         barWidth: 20,
                         color:'rgb(230, 162, 60)'
                     },
                     {
-                        type: 'line',
+                        type: 'bar',
+                        stack: '总量',
                         barWidth: 20,
                         color:'#83bff6'
                     }
                 ]
           };
         // 绘制图表
-          lineChart.setOption(option);
+          barChart.setOption(option);
         }
     },
     mounted () {

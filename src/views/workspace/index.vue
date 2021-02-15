@@ -95,10 +95,6 @@ export default {
                             {
                                 name: "系统基础信息",
                                 router: "systemlist"
-                            },
-                            {
-                                name: "系统指标信息",
-                                router: "indicatorinfo"
                             }
                         ]
                     }
@@ -114,9 +110,9 @@ export default {
                                     router: "chart"
                                 },
                                 {
-                                    name: "已处理异常",
+                                    name: "异常详情",
                                     router: "history"
-                                },
+                                }
                             ]
                     }
                 ],
