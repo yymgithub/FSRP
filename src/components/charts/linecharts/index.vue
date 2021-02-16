@@ -70,23 +70,18 @@ export default {
                 series: [
                     {
                         type: 'line',
-                        barWidth: 16,
-                        color:'rgb(245, 108, 108)',
-                    },
-                    {
-                        type: 'line',
-                        barWidth: 20,
-                        color:'rgb(255, 136, 51)'
-                    },
-                    {
-                        type: 'line',
-                        barWidth: 20,
-                        color:'rgb(230, 162, 60)'
-                    },
-                    {
-                        type: 'line',
-                        barWidth: 20,
+                        areaStyle: {
+                            opacity: 0.5
+                        },
                         color:'#83bff6'
+
+                    },
+                    {
+                        type: 'line',
+                        areaStyle: {
+                            opacity: 0.5
+                        },
+                        color:'rgb(252, 157, 154)',
                     }
                 ]
           };

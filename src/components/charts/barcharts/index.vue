@@ -77,19 +77,19 @@ export default {
                     {
                         type: 'bar',
                         stack: '总量',
-                        barWidth: 20,
+                        barWidth: 16,
                         color:'rgb(255, 136, 51)'
                     },
                     {
                         type: 'bar',
                         stack: '总量',
-                        barWidth: 20,
+                        barWidth: 16,
                         color:'rgb(230, 162, 60)'
                     },
                     {
                         type: 'bar',
                         stack: '总量',
-                        barWidth: 20,
+                        barWidth: 16,
                         color:'#83bff6'
                     }
                 ]

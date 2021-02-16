@@ -16,7 +16,7 @@
             </a-row>
             </template>
             <h2 class="subtitle"> {{ subtitle }} </h2>
-            <linechart :lineChartId="item.id" :width="linewidth" :height="lineheight" :dimensions="dimensions" :source="source"></linechart>
+            <linechart :lineChartId="item.id" :width="linewidth" :height="lineheight" :dimensions="item.dimensions" :source="item.source"></linechart>
         </a-tab-pane>
         </a-tabs>
     </div>
@@ -45,18 +45,6 @@ export default {
                 type: Array,
                 default () {
                     return [];
-                }
-            },
-            source: {
-                type: Array,
-                default () {
-                    return []
-                }
-            },
-            dimensions: {
-                type: Array,
-                    default () {
-                    return []
                 }
             }
         },

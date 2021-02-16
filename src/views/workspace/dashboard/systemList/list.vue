@@ -58,13 +58,13 @@
     <section style="margin-top:20px">
       <div class="flexstyle">
           <a-card :loading="linechartloading" class="zhuji" size="small" :bordered="false">
-              <tablist :subtitle="'CPU&内存'" :panelist="master.cpu" :dimensions="barData.dimensions" :source="barData.source"></tablist>
+              <tablist :subtitle="'CPU&内存'" :panelist="master.cpu"></tablist>
           </a-card>
           <a-card :loading="linechartloading" class="zhuji" size="small" :bordered="false">
-              <tablist :subtitle="'磁盘读写'" :panelist="master.cd" :dimensions="barData.dimensions" :source="barData.source"></tablist>
+              <tablist :subtitle="'磁盘读写'" :panelist="master.cd"></tablist>
           </a-card>
           <a-card :loading="linechartloading" class="zhuji" size="small" :bordered="false">
-              <tablist :subtitle="'网络上下行'" :panelist="master.network" :dimensions="barData.dimensions" :source="barData.source"></tablist>
+              <tablist :subtitle="'网络上下行'" :panelist="master.network"></tablist>
           </a-card>
       </div>
     </section>
@@ -74,7 +74,7 @@
     <section style="margin-top:20px">
       <div class="flexstyle">
           <a-card :loading="linechartloading" class="rongqi" size="small" :bordered="false">
-              <tablist :subtitle="'CPU&内存'" :panelist="container.cpu" :dimensions="barData.dimensions" :source="barData.source"></tablist>
+              <tablist :subtitle="'CPU&内存'" :panelist="container.cpu"></tablist>
           </a-card>
       </div>
     </section>
@@ -84,10 +84,10 @@
     <section style="margin-top:20px">
       <div class="flexstyle">
           <a-card :loading="linechartloading" class="fuwu" size="small" :bordered="false">
-              <tablist :subtitle="'响应时间'" :panelist="service.respose" :dimensions="barData.dimensions" :source="barData.source"></tablist>
+              <tablist :subtitle="'响应时间'" :panelist="service.respose"></tablist>
           </a-card>
           <a-card :loading="linechartloading" class="fuwu" size="small" :bordered="false">
-              <tablist :subtitle="'每分钟调用次数'" :panelist="service.time" :dimensions="barData.dimensions" :source="barData.source"></tablist>
+              <tablist :subtitle="'每分钟调用次数'" :panelist="service.time"></tablist>
           </a-card>
       </div>
     </section>
@@ -105,118 +105,43 @@ export default {
         tablist
     },
     created() {
+        // 系统部署图信息
         this.$http.get('/data/systemdata.json').then((res) => {
               if (res.data.code === 200) {
                   this.dataList = res.data.dataList;
                   this.g6loading = false;
               }
         });
+        // 过去一周异常信息
         this.$http.get('/data/bardata.json').then((res) => {
               if (res.data.code === 200) {
                   this.barData.dimensions = res.data.dimensions;
                   this.barData.source = res.data.source;
                   this.barchartloading = false;
+              }
+        });
+        // 主机指标信息
+        this.$http.get('/data/masterdata.json').then((res) => {
+              if (res.data.code === 200) {
+                  this.master = res.data.data;
                   this.linechartloading = false;
               }
         });
-        this.master = {
-          cpu: [
-             {
-              id: 'cpumaster0',
-              title: '主机A'
-            },
-            {
-              id: 'cpumaster1',
-              title: '主机B'
-            }
-          ],
-          cd: [
-             {
-              id: 'cdmaster0',
-              title: '主机A'
-            },
-            {
-              id: 'cdmaster1',
-              title: '主机B'
-            }
-          ],
-          network: [
-             {
-              id: 'networkmaster0',
-              title: '主机A'
-            },
-            {
-              id: 'networkmaster1',
-              title: '主机B'
-            }
-          ]
-        };
-        this.container = {
-          cpu: [
-            {
-              id: 'cpucontainer0',
-              title: 'hadoopmaster'
-            },
-            {
-              id: 'testcontainer0',
-              title: 'hadoopmastertest'
-            }
-          ]
-        };
-        this.service = {
-          respose: [
-             {
-              id: 'resposeservice0',
-              title: 'master-ResourceManager'
-            },
-            {
-              id: 'resposeservice1',
-              title: 'master-NameNode'
-            },
-            {
-              id: 'resposeservice2',
-              title: 'slave1-DataNode'
-            },
-            {
-              id: 'resposeservice3',
-              title: 'slave1-NodeManager'
-            },
-            {
-              id: 'resposeservice4',
-              title: 'slave2-DataNode'
-            },
-            {
-              id: 'resposeservice5',
-              title: 'slave2-NodeManager'
-            }
-          ],
-          time: [
-             {
-              id: 'timeservice0',
-              title: 'master-ResourceManager'
-            },
-            {
-              id: 'timeservice1',
-              title: 'master-NameNode'
-            },
-            {
-              id: 'timeservice2',
-              title: 'slave1-DataNode'
-            },
-            {
-              id: 'timeservice3',
-              title: 'slave1-NodeManager'
-            },
-            {
-              id: 'timeservice4',
-              title: 'slave2-DataNode'
-            },
-            {
-              id: 'timeservice5',
-              title: 'slave2-NodeManager'
-            }
-          ]
-        }
+        // 容器指标信息
+        this.$http.get('/data/containerdata.json').then((res) => {
+              if (res.data.code === 200) {
+                  this.container = res.data.data;
+                  this.linechartloading = false;
+              }
+        });
+        // 服务指标信息
+        this.$http.get('/data/servicedata.json').then((res) => {
+              if (res.data.code === 200) {
+                  this.service = res.data.data;
+                  this.linechartloading = false;
+              }
+        });
+       
     },
     mounted() {
     },

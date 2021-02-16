@@ -110,7 +110,7 @@ export default {
                                     router: "chart"
                                 },
                                 {
-                                    name: "异常详情",
+                                    name: "已解决异常",
                                     router: "history"
                                 }
                             ]

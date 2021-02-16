@@ -1,0 +1,178 @@
+{
+    "code": 200,
+    "msg": "success",
+    "data": {
+        "respose": [
+        {
+            "id": "resposeservice0",
+            "title": "master-ResourceManager",
+            "dimensions": ["time", "响应时间(ms)"],
+            "source":[
+                ["2.1", 15],
+                ["2.2", 14],
+                ["2.3", 18],
+                ["2.4", 15],
+                ["2.5", 17],
+                ["2.6", 19],
+                ["2.7", 13]
+            ]
+        },
+        {
+            "id": "resposeservice1",
+            "title": "master-NameNode",
+            "dimensions": ["time", "响应时间(ms)"],
+            "source":[
+                ["2.1", 15],
+                ["2.2", 14],
+                ["2.3", 18],
+                ["2.4", 15],
+                ["2.5", 17],
+                ["2.6", 19],
+                ["2.7", 13]
+            ]
+        },
+        {
+            "id": "resposeservice2",
+            "title": "slave1-DataNode",
+            "dimensions": ["time", "响应时间(ms)"],
+            "source":[
+                ["2.1", 15],
+                ["2.2", 14],
+                ["2.3", 18],
+                ["2.4", 15],
+                ["2.5", 17],
+                ["2.6", 19],
+                ["2.7", 13]
+            ]
+        },
+        {
+            "id": "resposeservice3",
+            "title": "slave1-NodeManager",
+            "dimensions": ["time", "响应时间(ms)"],
+            "source":[
+                ["2.1", 15],
+                ["2.2", 14],
+                ["2.3", 18],
+                ["2.4", 15],
+                ["2.5", 17],
+                ["2.6", 19],
+                ["2.7", 13]
+            ]
+        },
+        {
+            "id": "resposeservice4",
+            "title": "slave2-DataNode",
+            "dimensions": ["time", "响应时间(ms)"],
+            "source":[
+                ["2.1", 15],
+                ["2.2", 14],
+                ["2.3", 18],
+                ["2.4", 15],
+                ["2.5", 17],
+                ["2.6", 19],
+                ["2.7", 13]
+            ]
+        },
+        {
+            "id": "resposeservice5",
+            "title": "slave2-NodeManager",
+            "dimensions": ["time", "响应时间(ms)"],
+            "source":[
+                ["2.1", 15],
+                ["2.2", 14],
+                ["2.3", 18],
+                ["2.4", 15],
+                ["2.5", 17],
+                ["2.6", 19],
+                ["2.7", 13]
+            ]
+        }
+        ],
+        "time": [
+        {
+            "id": "timeservice0",
+            "title": "master-ResourceManager",
+            "dimensions": ["time", "每分钟调用次数"],
+            "source":[
+                ["2.1", 15],
+                ["2.2", 14],
+                ["2.3", 18],
+                ["2.4", 15],
+                ["2.5", 17],
+                ["2.6", 19],
+                ["2.7", 13]
+            ]
+        },
+        {
+            "id": "timeservice1",
+            "title": "master-NameNode",
+            "dimensions": ["time", "每分钟调用次数"],
+            "source":[
+                ["2.1", 15],
+                ["2.2", 14],
+                ["2.3", 18],
+                ["2.4", 15],
+                ["2.5", 17],
+                ["2.6", 19],
+                ["2.7", 13]
+            ]
+        },
+        {
+            "id": "timeservice2",
+            "title": "slave1-DataNode",
+            "dimensions": ["time", "每分钟调用次数"],
+            "source":[
+                ["2.1", 15],
+                ["2.2", 14],
+                ["2.3", 18],
+                ["2.4", 15],
+                ["2.5", 17],
+                ["2.6", 19],
+                ["2.7", 13]
+            ]
+        },
+        {
+            "id": "timeservice3",
+            "title": "slave1-NodeManager",
+            "dimensions": ["time", "每分钟调用次数"],
+            "source":[
+                ["2.1", 15],
+                ["2.2", 14],
+                ["2.3", 18],
+                ["2.4", 15],
+                ["2.5", 17],
+                ["2.6", 19],
+                ["2.7", 13]
+            ]
+        },
+        {
+            "id": "timeservice4",
+            "title": "slave2-DataNode",
+            "dimensions": ["time", "每分钟调用次数"],
+            "source":[
+                ["2.1", 15],
+                ["2.2", 14],
+                ["2.3", 18],
+                ["2.4", 15],
+                ["2.5", 17],
+                ["2.6", 19],
+                ["2.7", 13]
+            ]
+        },
+        {
+            "id": "timeservice5",
+            "title": "slave2-NodeManager",
+            "dimensions": ["time", "每分钟调用次数"],
+            "source":[
+                ["2.1", 15],
+                ["2.2", 14],
+                ["2.3", 18],
+                ["2.4", 15],
+                ["2.5", 17],
+                ["2.6", 19],
+                ["2.7", 13]
+            ]
+        }
+        ]
+    }
+}

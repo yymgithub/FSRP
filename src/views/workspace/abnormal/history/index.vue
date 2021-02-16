@@ -1,6 +1,6 @@
 <template>
     <div>
-        异常详情
+        历史异常
     </div>
 </template>
 
