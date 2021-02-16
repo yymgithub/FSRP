@@ -73,15 +73,22 @@ export default {
                         areaStyle: {
                             opacity: 0.5
                         },
-                        color:'#83bff6'
-
+                        color:'rgb(252, 157, 154)',
+                        symbolSize: 4,
+                        lineStyle: {
+                            width: 1
+                        }
                     },
                     {
                         type: 'line',
                         areaStyle: {
                             opacity: 0.5
                         },
-                        color:'rgb(252, 157, 154)',
+                        color:'#83bff6',
+                        symbolSize: 4,
+                        lineStyle: {
+                            width: 1
+                        }
                     }
                 ]
           };

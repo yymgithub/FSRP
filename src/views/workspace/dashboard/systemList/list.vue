@@ -1,5 +1,6 @@
 <template>
   <div>
+    <BaseTitle content="基本信息" size="default" style="margin-top:-30px;"></BaseTitle>
     <section>
     <a-row>
       <a-col :span="16">
@@ -45,17 +46,15 @@
                   </a-col>
                 </a-row>
           </a-card>
-          <a-card :loading="barchartloading" style="margin-top:20px;height:370px;" size="small" :bordered="false" title="过去一周异常统计">
+          <a-card :loading="barchartloading" style="margin-top:20px;height:345px;" size="small" :bordered="false" title="过去一周异常统计">
               <barchart :barChartId="barChartId" :width="barwidth" :height="barheight" :dimensions="barData.dimensions" :source="barData.source"></barchart>
           </a-card>
         </div>
       </a-col>
     </a-row>
     </section>
-    <a-divider orientation="left">
-      主机指标信息
-    </a-divider>
-    <section style="margin-top:20px">
+    <BaseTitle content="主机指标信息" size="default"></BaseTitle>
+    <section>
       <div class="flexstyle">
           <a-card :loading="linechartloading" class="zhuji" size="small" :bordered="false">
               <tablist :subtitle="'CPU&内存'" :panelist="master.cpu"></tablist>
@@ -68,20 +67,16 @@
           </a-card>
       </div>
     </section>
-    <a-divider orientation="left">
-      容器指标信息
-    </a-divider>
-    <section style="margin-top:20px">
+    <BaseTitle content="容器指标信息" size="default"></BaseTitle>
+    <section>
       <div class="flexstyle">
           <a-card :loading="linechartloading" class="rongqi" size="small" :bordered="false">
               <tablist :subtitle="'CPU&内存'" :panelist="container.cpu"></tablist>
           </a-card>
       </div>
     </section>
-     <a-divider orientation="left">
-      服务指标信息
-    </a-divider>
-    <section style="margin-top:20px">
+    <BaseTitle content="服务指标信息" size="default"></BaseTitle>
+    <section>
       <div class="flexstyle">
           <a-card :loading="linechartloading" class="fuwu" size="small" :bordered="false">
               <tablist :subtitle="'响应时间'" :panelist="service.respose"></tablist>
@@ -96,13 +91,15 @@
 <script>
 import mind from '@/components/mind';
 import barchart from '@/components/charts/barcharts';
-import tablist from '@/components/tablist'
+import tablist from '@/components/tablist';
+import BaseTitle from '@/components/BaseTitle'
 export default {
     name:'systemlist',
     components: {
         mind,
         barchart,
-        tablist
+        tablist,
+        BaseTitle
     },
     created() {
         // 系统部署图信息
@@ -141,7 +138,6 @@ export default {
                   this.linechartloading = false;
               }
         });
-       
     },
     mounted() {
     },
@@ -151,7 +147,7 @@ export default {
           barchartloading: true,
           linechartloading: true,
           dataList: {},
-          height: 500,
+          height: 480,
           barChartId: 'linechart1',
           barheight: '300px',
           barwidth: '100%',

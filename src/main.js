@@ -11,10 +11,12 @@ import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import icon from '@/components/icon';
 import Antd from 'ant-design-vue';
+import Utils from './Utils';
 import App from './App.vue';
 
 Vue.config.productionTip = false;
 Vue.prototype.$http = axios;
+Vue.prototype.$utils = Utils;
 Vue.use(router);
 Vue.use(ElementUI);
 Vue.use(ViewUI);
