@@ -148,7 +148,7 @@ export default {
           linechartloading: true,
           dataList: {},
           height: 480,
-          barChartId: 'linechart1',
+          barChartId: 'barchart1',
           barheight: '300px',
           barwidth: '100%',
           lineoption: {},

@@ -11,6 +11,7 @@ import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import icon from '@/components/icon';
 import Antd from 'ant-design-vue';
+import VueClipboard from 'vue-clipboard2';
 import Utils from './Utils';
 import App from './App.vue';
 
@@ -21,9 +22,10 @@ Vue.use(router);
 Vue.use(ElementUI);
 Vue.use(ViewUI);
 Vue.use(Antd);
-
+VueClipboard.config.autoSetContainer = true;
+Vue.use(VueClipboard);
+//需要全局注册的组件
 Vue.component('my-icon', icon);
-// Vue.component(List.name, List)
 
 new Vue({
   router,
