@@ -48,7 +48,8 @@
     },
     "rules": {
       "no-console": "off",
-      "no-irregular-whitespace": "off"
+      "no-irregular-whitespace": "off",
+      "no-unused-vars": "off"
     }
   },
   "browserslist": [

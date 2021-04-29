@@ -1,0 +1,97 @@
+{
+    "code": 200,
+    "msg": "success",
+    "data": {
+        "nodes": [
+            {
+                "id": "response_time",
+                "label": "response_time",
+                "data": {
+                    "name": "response_time",
+                    "health_level": 1,
+                    "time": "2021.4.1"
+                }
+            },
+            {
+                "id": "log1",
+                "label": "log1",
+                "data": {
+                    "name": "log1",
+                    "health_level": 1,
+                    "time": "2021.4.1"
+                }
+            },
+            {
+                "id": "log2",
+                "label": "log2",
+                "data": {
+                    "name": "log2",
+                    "health_level": 0,
+                    "time": "2021.4.1"
+                }
+            },
+            {
+                "id": "container_men_used",
+                "label": "container_men_used",
+                "data": {
+                    "name": "container_men_used",
+                    "health_level": 1,
+                    "time": "2021.4.1"
+                }
+            },
+            {
+                "id": "memory_used_pot",
+                "label": "memory_used_pot",
+                "data": {
+                    "name": "memory_used_pot",
+                    "health_level": 1,
+                    "time": "2021.4.1"
+                }
+            },
+            {
+                "id": "container_cpu_used",
+                "label": "container_cpu_used",
+                "data": {
+                    "name": "container_cpu_used",
+                    "health_level": 0,
+                    "time": "2021.4.1"
+                }
+            },
+            {
+                "id": "cpu_until_pot",
+                "label": "cpu_until_pot",
+                "data": {
+                    "name": "cpu_until_pot",
+                    "health_level": 1,
+                    "time": "2021.4.1"
+                }
+            }
+        ],
+        "edges": [
+            {
+                "source": "cpu_until_pot",
+                "target": "container_men_used"
+            },
+            {
+                "source": "memory_used_pot",
+                "target": "container_men_used"
+            },
+            {
+                "source": "container_cpu_used",
+                "target": "memory_used_pot"
+            },
+            {
+                "source": "memory_used_pot",
+                "target": "container_cpu_used"
+            },
+            {
+                "source": "container_cpu_used",
+                "target": "cpu_until_pot"
+            },
+            {
+                "source": "cpu_until_pot",
+                "target": "container_cpu_used"
+            }
+        ]
+    }
+}

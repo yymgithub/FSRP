@@ -18,8 +18,7 @@
         color: #555;
         .text {
             display: inline-block;
-        font-weight: bold!important;
-
+            font-weight: bold!important;
         }
     }
 

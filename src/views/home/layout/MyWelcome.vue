@@ -1,17 +1,17 @@
 <template>
     <section>
-        <h1>智能监控平台</h1>
+        <h1>智能运维平台</h1>
         <p class="desc">IT Failure Solution Recommendation Platform</p>
          <p class="p3">
-            <span>故障问答</span>
+            <span>系统信息</span>
             <i></i>
-            <span>记录查询</span>
+            <span>指标监控</span>
              <i></i>
-            <span>历史推荐</span>
+            <span>异常统计</span>
             <i></i>
-            <span>知识图谱</span>
+            <span>故障路径</span>
             <i></i>
-            <span>个人管理</span>
+            <span>辅助诊断</span>
         </p>
           <div class="btn-wrap">
                 <div class="btn">开始使用</div>

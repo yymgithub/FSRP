@@ -1,0 +1,36 @@
+{
+    "code": 200,
+    "msg": "success",
+    "data": [
+        {
+            "id": 1,
+            "reason": "Some lines are incorrect, you don't filter the null line",
+            "answer": "events_all = FOREACH logsGENERATE Extractor(line) AS line:tuple(a:int,b:int,c:int);"
+        },
+        {
+            "id": 2,
+            "reason": "Hive doesn't support DISTINCT * syntax",
+            "answer": "SELECT DISTINCT field1, field2, ...., fieldN FROM first_working_table"
+        },
+        {
+            "id": 3,
+            "reason": "Put a space between '-D' and 'java'",
+            "answer": "check your ~/.bashrc if you add line export HADOOP_OPTS='-Djava.library.path=$HADOOP_HOME/lib'"
+        },
+        {
+            "id": 4,
+            "reason": "The compression requires large amounts of memory",
+            "answer": "set mapred.child.java.opts=-Xmx2048m"
+        },
+        {
+            "id": 5,
+            "reason": "HADOOP_CLASSPATH configuration error",
+            "answer": "Please try setting the HADOOP_CLASSPATH parameter to point to a libthrift.jar file that matches "
+        },
+        {
+            "id": 6,
+            "reason": "Permission denied",
+            "answer": "Use chmod to change the permission"
+        }
+    ]
+}

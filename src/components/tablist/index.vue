@@ -22,9 +22,9 @@
     </div>
 </template>
 <script>
-import linechart from '@/components/charts/linecharts';
+import linechart from '@/components/Charts/linecharts';
 export default {
-        name: "tablist",
+        name: "Tablist",
         components: {
             linechart
         },

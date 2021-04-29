@@ -1,7 +1,7 @@
 <template>
     <section>
         <p class="title">欢迎使用</p>
-        <p class="desc">智能监控平台</p>
+        <p class="desc">智能运维平台</p>
         <router-link class="btn" tag="div" to="/workspace">立即体验</router-link>
     </section>
 </template>

@@ -1,0 +1,207 @@
+{
+    "code": 200,
+    "msg": "success",
+    "data": {
+        "nodes": [
+            {
+                "id": "system",
+                "label": "system",
+                "mark": 0
+            },
+            {
+                "id": "machineA",
+                "label": "主机A",
+                "mark": 1,
+                "info": {
+                    "cpu": "20",
+                    "ram": "2",
+                    "read": "20",
+                    "write": "20",
+                    "up": "23",
+                    "down": "20"
+                }
+            },
+            {
+                "id": "machineB",
+                "label": "主机B",
+                "mark": 1,
+                "info": {
+                    "cpu": "21",
+                    "ram": "20",
+                    "read": "20",
+                    "write": "20",
+                    "up": "20",
+                    "down": "20"
+                }
+            },
+            {
+                "id": "hadoopmaster",
+                "label": "hadoop-master",
+                "mark": 2,
+                "fault": 1,
+                "info": {
+                    "cpu": "24",
+                    "ram": "20",
+                    "read": "20",
+                    "write": "20",
+                    "up": "20",
+                    "down": "20"
+                }
+            },
+            {
+                "id": "hadoopslave1",
+                "label": "hadoop-slave1",
+                "mark": 3,
+                "fault": 1,
+                "info": {
+                    "cpu": "26",
+                    "ram": "20",
+                    "read": "20",
+                    "write": "20",
+                    "up": "20",
+                    "down": "20"
+                }
+            },
+            {
+                "id": "hadoopslave2",
+                "label": "hadoop-slave2",
+                "mark": 3,
+                "info": {
+                    "cpu": "27",
+                    "ram": "20",
+                    "read": "20",
+                    "write": "20",
+                    "up": "20",
+                    "down": "20"
+                }
+            },
+            {
+                "id": "masterNameNode",
+                "label": "NameNode",
+                "mark": 4,
+                "info": {
+                    "cpu": "23",
+                    "ram": "20",
+                    "read": "20",
+                    "write": "20",
+                    "up": "20",
+                    "down": "20"
+                }
+            },
+            {
+                "id": "slave1NameNode",
+                "label": "NameNode",
+                "mark": 4,
+                "fault": 1,
+                "info": {
+                    "cpu": "28",
+                    "ram": "20",
+                    "read": "20",
+                    "write": "20",
+                    "up": "20",
+                    "down": "20"
+                }
+            },
+            {
+                "id": "slave2NameNode",
+                "label": "NameNode",
+                "mark": 4,
+                "info": {
+                    "cpu": "28",
+                    "ram": "20",
+                    "read": "20",
+                    "write": "20",
+                    "up": "20",
+                    "down": "20"
+                }
+            },
+            {
+                "id": "masterResManager",
+                "label": "ResourceManager",
+                "mark": 5,
+                "fault": 1,
+                "info": {
+                    "cpu": "29",
+                    "ram": "20",
+                    "read": "20",
+                    "write": "20",
+                    "up": "20",
+                    "down": "20"
+                }
+            },
+            {
+                "id": "slave1ResManager",
+                "label": "ResourceManager",
+                "mark": 5,
+                "fault": 1,
+                "info": {
+                    "cpu": "22",
+                    "ram": "20",
+                    "read": "20",
+                    "write": "20",
+                    "up": "20",
+                    "down": "20"
+                }
+            },
+            {
+                "id": "slave2ResManager",
+                "label": "ResourceManager",
+                "mark": 5,
+                "info": {
+                    "cpu": "21",
+                    "ram": "20",
+                    "read": "20",
+                    "write": "20",
+                    "up": "20",
+                    "down": "20"
+                }
+            }
+        ],
+        "edges": [
+            {
+                "source": "system",
+                "target": "machineA"
+            },
+            {
+                "source": "system",
+                "target": "machineB"
+            },
+            {
+                "source": "machineA",
+                "target": "hadoopmaster"
+            },
+            {
+                "source": "machineB",
+                "target": "hadoopslave1"
+            },
+            {
+                "source": "machineB",
+                "target": "hadoopslave2"
+            },
+            {
+                "source": "hadoopmaster",
+                "target": "masterNameNode"
+            },
+            {
+                "source": "hadoopmaster",
+                "target": "masterResManager"
+            },
+            {
+                "source": "hadoopslave1",
+                "target": "slave1NameNode"
+            },
+            {
+                "source": "hadoopslave1",
+                "target": "slave1ResManager"
+            },
+            {
+                "source": "hadoopslave2",
+                "target": "slave2NameNode"
+            },
+            {
+                "source": "hadoopslave2",
+                "target": "slave2ResManager"
+            }
+        ]
+    }
+}

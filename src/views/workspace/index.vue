@@ -11,16 +11,16 @@
                     <my-icon v-if="listIndex != 1" :type="item.icon"></my-icon>
                     <my-icon v-else :type="item.activeIcon"></my-icon>
                 </el-menu-item>
-                <el-menu-item :index="item.path" :key="item.path" v-for="item in nav.person">
+                <!-- <el-menu-item :index="item.path" :key="item.path" v-for="item in nav.person">
                     <my-icon v-if="listIndex != 2" :type="item.icon"></my-icon>
                     <my-icon v-else :type="item.activeIcon"></my-icon>
-                </el-menu-item>
+                </el-menu-item> -->
                 <Button class="hideMenuStyle" type="text" shape="circle" @click="hideMenu" icon="md-arrow-back" v-if="listIndex !== -1"></Button>
                 <Button class="hideMenuStyle" type="text" shape="circle" @click="showMenu" icon="md-arrow-forward" v-if="listIndex == -1"></Button>
             </el-menu>
             <section class="tab" v-if="listIndex == 0">
                 <div class="title">
-                    <span>监控信息</span>
+                    <span>信息管理</span>
                 </div>
                 <ul class="list">
                     <router-link tag="li" :to="{'name':item.router}" v-for="(item, index) in nav.dashboard[navIndex].children" :key="index">{{item.name}}</router-link>
@@ -28,20 +28,20 @@
             </section>
             <section class="tab" v-if="listIndex == 1">
                 <div class="title">
-                    <span>异常信息</span>
+                    <span>故障管理</span>
                 </div>
                 <ul class="list">
                     <router-link tag="li" :to="{'name':item.router}" v-for="(item, index) in nav.abnormal[navIndex].children" :key="index">{{item.name}}</router-link>
                 </ul>
             </section>
-            <section class="tab" v-if="listIndex == 2">
+            <!-- <section class="tab" v-if="listIndex == 2">
                 <div class="title">
                     <span>个人管理</span>
                 </div>
                 <ul class="list">
                     <router-link tag="li" :to="{'name':item.router}" v-for="(item, index) in nav.person[navIndex].children" :key="index">{{item.name}}</router-link>
                 </ul>
-            </section>
+            </section> -->
             <section class="main-wrap">
                 <el-scrollbar class="page-component__left">
                     <!-- <el-breadcrumb separator=">">
@@ -93,8 +93,12 @@ export default {
                         activeIcon: "home_huiduceshi_sele",
                         children: [
                             {
-                                name: "系统基础信息",
+                                name: "系统部署信息",
                                 router: "systemlist"
+                            },
+                            {
+                                name: "系统指标信息",
+                                router: "indicatorinfo"
                             }
                         ]
                     }
@@ -107,11 +111,7 @@ export default {
                             children: [
                                 {
                                     name: "异常监控",
-                                    router: "chart"
-                                },
-                                {
-                                    name: "已解决异常",
-                                    router: "history"
+                                    router: "list"
                                 }
                             ]
                     }

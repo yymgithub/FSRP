@@ -1,7 +1,52 @@
 <template>
   <div>
-    <!-- <BaseTitle content="异常级别" size="default" style="margin-top:-30px;"></BaseTitle> -->
-    <BaseTitle content="异常列表" size="default" style="margin-top:-30px;"></BaseTitle>
+    <BaseTitle content="异常统计" size="default" style="margin-top:-30px;"></BaseTitle>
+    <a-row :gutter="8">
+      <a-col :span="6">
+         <a-card size="small" style="height:250px;" :bordered="false" title="当前异常">
+                <div style="height:10px;"></div>
+                <a-row>
+                  <a-col :span="12" class="nowinfo">
+                    <a-statistic title="紧急" :value="2" :value-style="{ color: 'rgb(245, 108, 108)' }">
+                    <template #prefix>
+                      <a-icon type="close-circle" theme="twoTone" two-tone-color="rgb(245, 108, 108)" class="icon"/>
+                    </template>
+                    </a-statistic>
+                  </a-col>
+                  <a-col :span="12" class="nowinfo">
+                    <a-statistic title="重要" :value="4" :value-style="{ color: 'rgb(255, 136, 51)' }">
+                    <template #prefix>
+                      <a-icon type="exclamation-circle" theme="twoTone" two-tone-color="rgb(255, 136, 51)" class="icon" />
+                    </template>
+                    </a-statistic>
+                  </a-col>
+                </a-row>
+                <div style="height:30px;"></div>
+                <a-row>
+                  <a-col :span="12" class="nowinfo">
+                    <a-statistic title="次要" :value="5" :value-style="{ color: 'rgb(230, 162, 60)' }">
+                    <template #prefix>
+                      <a-icon type="question-circle" theme="twoTone" two-tone-color="rgb(230, 162, 60)" class="icon" />
+                    </template>
+                    </a-statistic>
+                  </a-col>
+                  <a-col :span="12" class="nowinfo">
+                    <a-statistic title="提示" :value="1" :value-style="{ color: 'rgb(64, 158, 255)' }">
+                    <template #prefix>
+                      <a-icon type="info-circle" theme="twoTone" two-tone-color="rgb(64, 158, 255)" class="icon" />
+                    </template>
+                    </a-statistic>
+                  </a-col>
+                </a-row>
+        </a-card>
+      </a-col>
+      <a-col :span="18">
+         <a-card :loading="barchartloading" size="small" style="height:250px;" :bordered="false" title="过去一周异常统计">
+            <barchart :barChartId="barChartId" :width="barwidth" :height="barheight" :dimensions="barData.dimensions" :source="barData.source"></barchart>
+        </a-card>
+      </a-col>
+    </a-row>
+    <BaseTitle content="异常列表" size="default"></BaseTitle>
     <CommonTable
           class="table"
           :dynamicColumns="{show: true, columns: tableColumnsChecked, onChange: commonTableChange}"
@@ -12,13 +57,12 @@
       <div v-show="stackAnalysisModal.subshow" style="margin-top:20px;">
         <Card>
           <span class="indicate indicate-success"></span>
-          <span style="margin-right:10px;">指标正常</span>
-          <span class="indicate indicate-failure"></span>
+          <span>指标正常</span>
+          <span class="indicate indicate-failure" style="margin-left:10px;"></span>
           <span>指标异常</span>
-
           <div class="ratio-content-panel-wrap">
-            <Row class="ratio-content-panel" type="flex">
-              <Col  
+            <a-row class="ratio-content-panel" type="flex">
+              <a-col  
                 class="section"
                 :style="{
                     borderRight: isBorderRight(ratioList, index) ? '1px solid #dcdee2' : 'none'
@@ -31,12 +75,19 @@
                   :indicate-style="indicateStyle"
                   :list="item.list">
               </RatioList>
-              </Col>
-            </Row>
+              </a-col>
+            </a-row>
           </div>
           </Card>
       </div>
     </Modal>
+    <Drawer title="推荐解决方案" width="900" :closable="true" v-model="stackAnalysisDrawer.show">
+      <Table :columns="recTableConfig" :data="recommenddata"></Table>
+    </Drawer>
+    <Drawer title="详情" width="750" :closable="true" v-model="stackAnalysisDrawer.subshow">
+      <p>异常原因：</p>
+      <p>解决方案：</p>
+    </Drawer>
   </div>
 </template>
 <script>
@@ -44,93 +95,37 @@ import BaseTitle from '@/components/BaseTitle';
 import CommonTable from '@/components/CommonTable';
 import TableColumns from '@/components/TableColumns';
 import RatioList from '@/components/RatioList';
+import barchart from '@/components/Charts/barcharts';
 export default {
     name:'abnormal',
     components: {
         BaseTitle,
         CommonTable,
-        RatioList
+        RatioList,
+        barchart
     },
     data () {
       return {
+        barchartloading: true,
+        barChartId: 'barchart1',
+        barheight: '200px',
+        barwidth: '100%',
+        barData: {
+            dimensions: [],
+            source: []
+        },
         tableData:[],
         stackAnalysisModal:{
           show: false,
           subshow: true,
           content: ''
         },
-        ratioList:[
-          {
-            title:'主机A-hadoop-master',
-            list:[
-              {
-                title:'NameNode',
-                servstatus: 1,
-                alldelay:'900ms',
-                servicedelay:'108ms',
-                usetime:'6',
-                error:'0',
-                type:'hadoop'
-              },
-              {
-                title:'ResourceManager',
-                servstatus: 0,
-                alldelay:'800ms',
-                servicedelay:'100ms',
-                usetime:'5',
-                error:'2',
-                type:'hadoop'
-              }
-            ]
-          },
-          {
-            title:'主机B-hadoop-slave1',
-            list:[
-               {
-                title:'DataNode',
-                servstatus: 0,
-                alldelay:'890ms',
-                servicedelay:'700ms',
-                usetime:'',
-                error:'2',
-                type:'hadoop'
-              },
-              {
-                title:'NodeManager',
-                servstatus: 0,
-                alldelay:'900ms',
-                servicedelay:'700ms',
-                usetime:'6',
-                error:'2',
-                type:'hadoop'
-              }
-            ]
-
-          },
-          {
-            title:'主机B-hadoop-slave2',
-            list:[
-               {
-                title:'DataNode',
-                servstatus: 1,
-                alldelay:'900ms',
-                servicedelay:'800ms',
-                usetime:'6',
-                error:'0',
-                type:'hadoop'
-              },
-              {
-                title:'NodeManager',
-                servstatus: 1,
-                alldelay:'800ms',
-                servicedelay:'600ms',
-                usetime:'5',
-                error:'0',
-                type:'hadoop'
-              }
-            ]
-          }
-        ]
+        stackAnalysisDrawer:{
+          show: false,
+          subshow: false
+        },
+        recommenddata:[],
+        ratioList: []
       }
     },
     computed: {
@@ -146,10 +141,33 @@ export default {
                     data: this.tableData
                 }
             };
+      },
+      recTableConfig() {
+        return TableColumns.getRecColumns(this);
       }
     },
     created() {
+         // 过去一周异常信息
+        this.$http.get('/data/bardata.json').then((res) => {
+              if (res.data.code === 200) {
+                  this.barData.dimensions = res.data.dimensions;
+                  this.barData.source = res.data.source;
+                  this.barchartloading = false;
+              }
+        });
       this.loadData();
+      // 关键路径指标详情
+        this.$http.get('/data/ratiolistdata.json').then((res) => {
+              if (res.data.code === 200) {
+                  this.ratioList = res.data.data;
+              }
+        });
+      // 推荐列表数据
+        this.$http.get('/data/recommenddata.json').then((res) => {
+              if (res.data.code === 200) {
+                  this.recommenddata = res.data.data;
+              }
+        });
     },
     methods: {
           indicateStyle(servstatus) {
@@ -196,6 +214,22 @@ export default {
             if (info.path) {
               this.stackAnalysisModal.content = info.path;
             }
+          },
+          showStackAnalysisDrawer() {
+            this.stackAnalysisDrawer.show = true;
+          },
+          showSubDrawer() {
+            this.stackAnalysisDrawer.subshow = true;
+          },
+          handleProblem() {
+
+          },
+          gotoDetail(info) {
+            console.log(info);
+            this.$router.push({ 
+              path:"content",
+　　　　       query:{id:info.id} 
+            })
           }
      }
 }
@@ -227,8 +261,6 @@ export default {
                 white-space: nowrap;
             }
         }
-       
-
       }
   }
    .indicate {
@@ -259,6 +291,4 @@ export default {
         .indicate-failure {
             background: #ed4014;
         }
-   
-
 </style>

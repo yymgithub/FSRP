@@ -89,7 +89,7 @@ export default {
           height: vm.height,
           pixelRatio: 2,
           modes: {
-            default: ['collapse-expand', 'drag-canvas', 'zoom-canvas']
+            default: ['collapse-expand', 'drag-canvas']
         },
         // 节点类型及样式
         defaultNode: {

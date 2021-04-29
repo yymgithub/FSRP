@@ -1,8 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-// import { component } from 'vue/types/umd';
 
 Vue.use(VueRouter);
+const originalPush = VueRouter.prototype.push;
+
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err);
+}
 
 const routers = [
     {
@@ -27,7 +31,7 @@ const routers = [
                         path: 'systemlist',
                         name: 'systemlist',
                         meta: {
-                            title: '系统基础信息'
+                            title: '系统部署信息'
                         },
                         component: () => import('@/views/workspace/dashboard/systemList/list')
                     },
@@ -35,7 +39,7 @@ const routers = [
                         path: 'indicatorinfo',
                         name: 'indicatorinfo',
                         meta: {
-                            title: '异常信息统计'
+                            title: '基本指标信息'
                         },
                         component: () => import('@/views/workspace/dashboard/indicatorInfo/list')
                     }
@@ -48,7 +52,7 @@ const routers = [
                     title: '异常信息'
                 },
                 component: () => import('@/views/workspace/abnormal/index'),
-                redirect: '/workspace/abnormal/chart',
+                redirect: '/workspace/abnormal/list',
                 children: [
                     {
                         path: 'history',
@@ -59,12 +63,20 @@ const routers = [
                         component: () => import('@/views/workspace/abnormal/history/index')
                     },
                     {
-                        path: 'chart',
-                        name: 'chart',
+                        path: 'list',
+                        name: 'list',
                         meta: {
                             title: '异常监控'
                         },
-                        component: () => import('@/views/workspace/abnormal/chart/list')
+                        component: () => import('@/views/workspace/abnormal/list/list')
+                    },
+                    {
+                        path: 'content',
+                        name: 'content',
+                        meta: {
+                            title: '异常详情'
+                        },
+                        component: () => import('@/views/workspace/abnormal/list/content')
                     }
                 ]
             },

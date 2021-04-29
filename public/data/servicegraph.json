@@ -1,0 +1,162 @@
+{
+    "code": 200,
+    "msg": "success",
+    "data": {
+        "nodes": [
+            {
+                "id": "LVS1",
+                "label": "LVS1",
+                "data": {
+                    "name": "LVS1",
+                    "fault_id": "20",
+                    "health_level": 1,
+                    "machine": "主机B",
+                    "containner": "",
+                    "alldelay":"900ms",
+                    "servicedelay":"108ms",
+                    "usetime":"6",
+                    "error":"0",
+                    "servicetype":"hadoop"
+                }
+            },
+            {
+                "id": "apacheService2",
+                "label": "apacheService2",
+                "data": {
+                    "name": "apacheService2",
+                    "fault_id": "20",
+                    "health_level": 1,
+                    "machine": "主机B",
+                    "containner": "",
+                    "alldelay":"900ms",
+                    "servicedelay":"108ms",
+                    "usetime":"6",
+                    "error":"0",
+                    "servicetype":"hadoop"
+                }
+            },
+            {
+                "id": "mysqlService2",
+                "label": "mysqlService2",
+                "data": {
+                    "name": "mysqlService2",
+                    "fault_id": "20",
+                    "health_level": 1,
+                    "machine": "主机B",
+                    "containner": "",
+                    "alldelay":"900ms",
+                    "servicedelay":"108ms",
+                    "usetime":"6",
+                    "error":"0",
+                    "servicetype":"hadoop"
+                }
+            },
+            {
+                "id": "apacheService1",
+                "label": "apacheService1",
+                "data": {
+                    "name": "apacheService1",
+                    "fault_id": "20",
+                    "health_level": 0,
+                    "machine": "主机B",
+                    "containner": "",
+                    "alldelay":"900ms",
+                    "servicedelay":"108ms",
+                    "usetime":"6",
+                    "error":"0",
+                    "servicetype":"hadoop"
+                }
+            },
+            {
+                "id": "mysqlService1",
+                "label": "mysqlService1",
+                "data": {
+                    "name": "mysqlService1",
+                    "fault_id": "20",
+                    "health_level": 0,
+                    "machine": "主机B",
+                    "containner": "",
+                    "alldelay":"900ms",
+                    "servicedelay":"108ms",
+                    "usetime":"6",
+                    "error":"0",
+                    "servicetype":"hadoop"
+                }
+            },
+            {
+                "id": "apacheService3",
+                "label": "apacheService3",
+                "data": {
+                    "name": "apacheService3",
+                    "fault_id": "20",
+                    "health_level": 1,
+                    "machine": "主机B",
+                    "containner": "",
+                    "alldelay":"900ms",
+                    "servicedelay":"108ms",
+                    "usetime":"6",
+                    "error":"0",
+                    "servicetype":"hadoop"
+                }
+            },
+            {
+                "id": "mysqlService3",
+                "label": "mysqlService3",
+                "data": {
+                    "name": "mysqlService3",
+                    "fault_id": "20",
+                    "health_level": 1,
+                    "machine": "主机B",
+                    "containner": "",
+                    "alldelay":"900ms",
+                    "servicedelay":"108ms",
+                    "usetime":"6",
+                    "error":"0",
+                    "servicetype":"hadoop"
+                }
+            },
+            {
+                "id": "LVS2",
+                "label": "LVS2",
+                "data": {
+                    "name": "LVS2",
+                    "fault_id": "20",
+                    "health_level": 1,
+                    "machine": "主机B",
+                    "containner": "",
+                    "alldelay":"900ms",
+                    "servicedelay":"108ms",
+                    "usetime":"6",
+                    "error":"0",
+                    "servicetype":"hadoop"
+                }
+            }
+        ],
+        "edges": [
+            {
+                "source": "LVS1",
+                "target": "apacheService2"
+            },
+            {
+                "source": "LVS1",
+                "target": "apacheService1"
+            },
+            {
+                "source": "apacheService2",
+                "target": "mysqlService2"
+            },
+            {
+                "source": "apacheService1",
+                "target": "mysqlService1"
+            },
+            {
+                "source": "LVS2",
+                "target": "apacheService3"
+            },
+            {
+                "source": "apacheService3",
+                "target": "mysqlService3"
+            }
+        ]
+    }
+}

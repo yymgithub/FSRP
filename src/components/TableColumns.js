@@ -33,6 +33,7 @@ const CrashStackCell = {
     }
 };
 export default class TableColumns {
+
     static getColumns(context) {
         const columns = [
             {
@@ -92,6 +93,26 @@ export default class TableColumns {
                 },
                 align: 'center'
             },
+            // {
+            //     title: '推荐方案',
+            //     width: '100px',
+            //     render: (h, params) => {
+            //         return h('Button', {
+            //             props: {
+            //                 size: 'small',
+            //             },
+            //             domProps: {
+            //                 innerHTML: '查看'
+            //             },
+            //             on: {
+            //                 click: () => {
+            //                     context.showStackAnalysisDrawer(params.row, params.index);
+            //                 }
+            //             }
+            //         });
+            //     },
+            //     align: 'center'
+            // },
             {
                 key: 'time',
                 title: '发生时间',
@@ -101,8 +122,81 @@ export default class TableColumns {
             {
                 key: 'action',
                 title: '操作',
-                minWidth: 100,
+                minWidth: 200,
+                align: 'center',
+                render: (h, params) => {
+                    return h('div', [
+                        h('Button', {
+                            props: {
+                                size: 'small'
+                            },
+                            style: {
+                                marginLeft: '5px'
+                            },
+                            on: {
+                                click: () => context.gotoDetail(params.row)
+                            }
+                        }, '详情'),
+                        h('Button', {
+                            props: {
+                                type: 'info',
+                                size: 'small'
+                            },
+                            style: {
+                                marginLeft: '5px'
+                            },
+                            on: {
+                                click: () => context.handleProblem(params.row)
+                            }
+                        }, '处理')
+                    ]);
+                }
+            }
+        ];
+        return columns.filter(item => {
+            // 当某个column定义了if值,则当if的返回值为false时,不返回这个column
+            return !(item.if !== undefined && !item.if);
+        });
+    }
+
+    static getRecColumns(context) {
+        const columns = [
+            {
+                key: 'id',
+                title: '推荐度',
+                align: 'center',
+                width: '80'
+            },
+            {
+                key: 'reason',
+                title: '异常原因',
                 align: 'center'
+            },
+            {
+                key: 'answer',
+                title: '解决方案',
+                align: 'center'
+            },
+            {
+                key: 'action',
+                title: '操作',
+                align: 'center',
+                width: '100',
+                render: (h, params) => {
+                    return h('a-button', {
+                        props: {
+                            type: 'link',
+                        },
+                        domProps: {
+                            innerHTML: '详情'
+                        },
+                        on: {
+                            click: () => {
+                                context.showSubDrawer(params.row, params.index);
+                            }
+                        }
+                    });
+                },
             }
         ];
         return columns.filter(item => {

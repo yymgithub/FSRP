@@ -3,15 +3,15 @@
         <li class="ratio-item" v-for="(item,index) in list" :key="index" :style="{
             width: '100%'
         }">
-            <Poptip trigger="hover" transfer>
+            <!-- <Poptip trigger="hover" transfer> -->
                 <div :class="{'ratio-item-title': true}">
                     <span :class="indicateStyle(item.servstatus)"></span>
                     <span class="indicate-text">{{item.title}}</span>
                 </div>
-                <p class="pop-title ratio-item-title" slot="title">
+                <!-- <p class="pop-title ratio-item-title" slot="title">
                     <span>{{item.title}}</span>
-                </p>
-                <div class="pop-content" slot="content">
+                </p> -->
+                <!-- <div class="pop-content" slot="content">
                     <ul>
                         <li>
                             <span class="title">整体时延</span>
@@ -34,8 +34,8 @@
                             {{item.type}}
                         </li>
                     </ul>
-                </div>
-            </Poptip>
+                </div> -->
+            <!-- </Poptip> -->
         </li>
     </ul>
 </template>
